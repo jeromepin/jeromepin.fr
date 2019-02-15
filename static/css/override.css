@@ -1,0 +1,72 @@
+body, .header .logo-wrapper .logo {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+h2 {
+    color: #c05b4d;
+    font-size: 28px;
+    margin-block-start: 32px;
+    /* margin-block-end: 18px; */
+}
+
+h3 {
+    /* color: #c05b4d; */
+    font-size: 22px;
+    margin-block-start: 28px;
+    margin-block-end: 18px;
+}
+
+.header .logo-wrapper .logo {
+    font-size: 36px;
+}
+
+.header .site-navbar .menu .menu-item-link {
+    font-size: 22px;
+}
+
+.archive .archive-post:hover {
+    border-left: 1px solid #cacaca;
+    padding: 3px 20px;
+    transition: none;
+    transform: none;
+}
+
+.post .post-header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.post .post-header .post-title {
+    color: #c05b4d;
+    font-size: 32px;
+}
+
+.post .post-content code, .post .post-content pre {
+    background: inherit;
+}
+
+p {
+    font-size: 18px;
+    line-height: 29.124px; /*  font-size * 1.618 */
+    text-align: justify;
+    width: 100%;
+}
+
+.post .post-content .table-wrapper>table {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.social-links a {
+    /* color: #34495e; */
+    color: #cccccc;
+}
+
+.social-links a::before {
+    font-size: 20px;
+}
+
+.copyright span, .copyright .hexo-link {
+    color: #d9d9d9;
+}
