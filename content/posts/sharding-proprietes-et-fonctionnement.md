@@ -78,7 +78,7 @@ Ce service externe permet de mieux gérer les données non-uniformément distrib
 En revanche, il devient aussi un point de défaillance unique : chaque lecture ou écriture a besoin d'y accéder, il faut donc que la stabilité et les performances soient au rendez-vous. Il ne peut pas être caché ni dupliqué  facilement : des données obsolètes causeraient un désastre sur le cluster.
 
 
-# Conclusion
+## Conclusion
 
 Le sharding ajoute de la complexité non seulement en termes de développement mais aussi d'opérations : les données ne sont plus stockées au même endroit, le réseau introduit de la latence, la topologie change, plus de serveurs doivent être configurés, etc...
 
@@ -87,3 +87,4 @@ Le sharding ne doit pas être le premier axe d'amélioration. Bien connaître le
 Si l'application est limitée par les performances de lecture de la base de données, ajouter des **caches** ou des **replicas de lecture** peut corriger le problème sans ajouter trop de complexité.
 
 Enfin, il est important de s'assurer que les données sont organisées de façon optimale : les blobs sont sur un stockage externe (système de fichier, stockage objets, etc...), l'analyse et la recherche sont délégués à d'autres systèmes, etc...
+
