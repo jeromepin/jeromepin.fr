@@ -1,0 +1,74 @@
+==================================================================
+https://keybase.io/jeromepin
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://jeromepin.fr
+  * I am jeromepin (https://keybase.io/jeromepin) on keybase.
+  * I have a public key with fingerprint 5BFC F627 92AB 1702 642D  0EF7 90A6 E168 1E28 94F9
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101e427935bbbc72ac52955e9a2be90ee89ef732ebdc63a2b12b4efee4f923407ac0a",
+            "fingerprint": "5bfcf62792ab1702642d0ef790a6e1681e2894f9",
+            "host": "keybase.io",
+            "key_id": "90a6e1681e2894f9",
+            "kid": "0101e427935bbbc72ac52955e9a2be90ee89ef732ebdc63a2b12b4efee4f923407ac0a",
+            "uid": "2cff83a029c40f659654cb8732445b19",
+            "username": "jeromepin"
+        },
+        "revoke": {
+            "sig_ids": [
+                "3958101ed36e6721c705edbb913b7557eecf36ff8c41af652f55edd4d166e9610f"
+            ]
+        },
+        "service": {
+            "hostname": "jeromepin.fr",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1490534768,
+    "expire_in": 157680000,
+    "prev": "ed406c9bd853e3ed9532ee9429b3c810060b1c54d1f4439173e4d63513fda988",
+    "seqno": 9,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.66
+Comment: https://keybase.io/crypto
+
+yMJnAnicrZJPbBRVHMd3oYK0KFSJwQNJncTEmLWZ93fmbY2ExPg/WvSgAssy783v
+tdPSnXVmuqXpn5BgjAdIOBAVL22MXKompsDB024baBYR0Zimh2pXW0ICmghke+ih
+wTeNXoxH5zKZ3/v+Pt/v7zfv0kObM63Z7/oXuz4t1BezV2eag5l3FmbKI5YM/WEr
+P2L1w8YLjvoQJ8X+wLfylo1sBBQ7gjAppXKwpxgWjIHwsARhA7gCtEMwSF9xYooI
+SwoagGqBCbUdT9melbN0UOqBqBwFpcRgmdRKc4PFnkSOjTnFvm04wvY4IO4iwK4w
+BNPYG8ZphwknvRg6g9DUzEdxI95/6P/n3IMbOKy0dolnY6GorTkTnFElXdNPKZMo
+9R2MISp5A2DUfRCFA1AOStZYzoqgEvZDutg46DGpYyt/0CKCuWlCn3DgDkbKsRn4
+UgpEpMOYA6A04cZTUeQZP6xNdN+nPuIcBEe2tgqGbSwrgdqAp2v6t32njkywchQm
+oQqPmpPeJCnH+TRVMlxOpUMgi39DijIo+eYnmY4KRHEQlqw8MkqVBCkVUWEzQh3u
+5iw4Vg4iKAapgpmKbZ7UByoGCT61uRLSdxkBAr5gZskgKBaSKDO0zW2JFDOjaEqJ
+QA4B6nPCENG+J1zXSsd6rxRaeWFiej0GaRZX8pLBCKyx2dqhlky2NbPlgU3p5c20
+btv5z5Wee23r/X3r7QeOf/Hmox1nHmfnJi6/PlFt7351dkbvujSZu9Wx/+zdXxdW
+jlzbMR1c+HbTu1Mfn1xqrz7TqJ+/cWp9ZWUM7T/RN3L6etuLS8sdxw82pyZbuh6+
+/Mc8r17/pvZBo3NisXq66zndW3y59uCf3T/i+i/LLWr1qcr4bTrw+cBne1e+3vf9
+Wxe/2tk1P1fZ2hLffantozujb1TGG19e2f3KEzteGHq7sr1wJL/cPdf6W3P999lt
+a++Pzl88XJs4UZheLU8/8uShp+uZvqk+vPSzd+aHk6f2NHZlqx+u1ZKb1T27r947
+12w8pi/4k6vHhkf3flJYi396dsvz23nbeC5bD85eO7zWHJpa+Asmv2ZJ
+=8Izv
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/jeromepin
+
+==================================================================
