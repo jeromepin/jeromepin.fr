@@ -1,3 +1,9 @@
 /*
   X-Frame-Options: DENY
   X-XSS-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff
+  Feature-Policy: accelerometer 'none'; camera 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; payment 'none'; usb 'none'
+  Referrer-Policy: no-referrer-when-downgrade
+  Expect-Ct: max-age=604800, report-uri="https://18ca5429e629ce7ede6963207908c142.report-uri.com/r/d/ct/reportOnly"
+  Expect-Ct: max-age=604800, report-uri="https://18ca5429e629ce7ede6963207908c142.report-uri.com/r/d/ct/reportOnly"
+  Content-Security-Policy-Report-Only: default-src 'self'; report-uri "https://18ca5429e629ce7ede6963207908c142.report-uri.com/r/d/csp/reportOnly"
