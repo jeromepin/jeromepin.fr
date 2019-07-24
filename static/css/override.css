@@ -104,12 +104,12 @@ blockquote p {
     font-family: 'Inter', sans-serif;
 }
 
-.post .post-content code, .post .post-content pre {
-    background: inherit;
+.post .post-content code {
+	padding-left: 0;
 }
 
-.highlight div table tbody tr td:first-child pre code span:first-child {
-    padding: 0 0.4em 0 0!important;
+.post .post-content code, .post .post-content pre {
+    background: inherit;
 }
 
 .post .post-content p>code {
