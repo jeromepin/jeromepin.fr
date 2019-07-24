@@ -141,7 +141,7 @@ $ ./foo
 Un bon conteneur est un conteneur que l'on peut déplacer et redémarrer à la demande, sans pré-requis. Il faut donc qu'il soit le plus possible `stateless` : toutes les données persistantes dont a besoin l'application doivent être stockées dans des systèmes externes comme une base de données. Il ne doit pas y avoir de différence entre plusieurs instances d'une application.
 
 
-## Robustesse, healtchecks et timeouts
+## Robustesse, healthchecks et timeouts
 
 L'application doit être en mesure de gérer les erreurs via une dégradation de service ou via du _back-off_ plutôt que de crasher. Elle doit pouvoir non-seulement répondre à des _health checks_ (via une route http par exemple) mais aussi en émettre afin de surveiller la disponibilité des services liés.
 
