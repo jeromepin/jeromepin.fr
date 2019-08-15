@@ -1,5 +1,5 @@
 body {
-    font-family: "Palatino Linotype","Book Antiqua",Palatino,serif;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 h2 {
@@ -46,7 +46,7 @@ em {
 
 p {
     font-size: 18px;
-    line-height: 29.124px;
+    line-height: 32px;
     width: 100%;
     letter-spacing: -0.003em;
     overflow-wrap: break-word;
@@ -56,8 +56,8 @@ p {
 li {
     /* margin-bottom: 0.7rem; */
     padding-left: 1.4rem;
-    font-size: 16px;
-    line-height: 25.2px;
+    font-size: 18px;
+    line-height: 32px;
     width: 100%;
     letter-spacing: -0.003em;
     overflow-wrap: break-word;
