@@ -120,7 +120,7 @@ blockquote p {
 }
 
 .post .post-content code {
-	padding-left: 5px;
+	padding-left: 0px;
 	padding-right: 5px;
 }
 
@@ -129,6 +129,7 @@ blockquote p {
 }
 
 .post .post-content p>code, .post .post-content li>code {
+    padding-left: 5px;
     font-size: 0.8em;
     background-color: rgb(236, 239, 244);
     color: rgb(58, 52, 58);
