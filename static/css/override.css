@@ -128,7 +128,7 @@ blockquote p {
     background: inherit;
 }
 
-.post .post-content p>code {
+.post .post-content p>code, .post .post-content li>code {
     font-size: 0.8em;
     background-color: rgb(236, 239, 244);
     color: rgb(58, 52, 58);
