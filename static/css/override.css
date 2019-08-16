@@ -64,8 +64,8 @@ p {
     line-height: 32px;
     width: 100%;
     letter-spacing: -0.003em;
-    overflow-wrap: break-word;
     text-rendering: optimizeLegibility;
+    hyphens: auto;
 }
 
 li {
