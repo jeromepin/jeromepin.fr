@@ -151,7 +151,7 @@ I needed a tool which could abstract all those long curl commands and could be f
 
 ## The solution
 
-I ended up writing [esctl](https://github.com/jeromepin/esctl-full). It checks all my requirements and it's very easy to add new features by inheriting a class based on the output type.
+I ended up writing [esctl](https://github.com/jeromepin/esctl). It checks all my requirements and it's very easy to add new features by inheriting a class based on the output type.
 
 {{< figure src="/images/esctl-CLI-design-tree.svg" title="Esctl subcommands taxonomy" alt="Esctl subcommands taxonomy" >}}
 
@@ -242,13 +242,17 @@ $ esctl index list
 +-------+--------+--------+------------------------+---------+---------+------------+--------------+------------+--------------------+
 ```
 
-#### Change the number of replicas of a given inde
+#### Change the number of replicas of a given index
+
+_Not implemented yet. Would look like :_
 
 ```bash
 $ esctl index settings set number_of_replicas 2 --index=twitter
 ```
 
 #### Reset a index's refresh interval to its default value
+
+_Not implemented yet. Would look like :_
 
 ```bash
 $ esctl index settings reset refresh_interval --index=twitter
@@ -297,6 +301,8 @@ _Not implemented yet_
 
 #### Change cluster's transient setting 'indices.recovery.max_bytes_per_sec' to 20mb
 
+_Not implemented yet. Would look like :_
+
 ```bash
 $ esctl cluster settings set --transient indices.recovery.max_bytes_per_sec 20mb
 ```
@@ -329,23 +335,64 @@ def take_action(self, parsed_args):
 Here is, as a sample, the class associated to the `esctl cluster health` command:
 
 ```python
-class ClusterHealth(EsctlLister):
+class ClusterHealth(EsctlShowOne):
     """Retrieve the cluster health."""
 
     def take_action(self, parsed_args):
-        # Retrieve the cluster health using the appropriate elasticsearch-py function
-        health = collections.OrderedDict(
-            sorted(Esctl._es.cluster.health().items())
-        )
+        # Retrieve the cluster health using the appropriate elasticsearch-py function. Then order the output and sort it
+        health = self._sort_and_order_dict(Esctl._es.cluster.health())
 
         # Add coloration of the "status" (RED, YELLOW, GREEN) key based on it's value
-        health["status"] = "{}{}{}".format(
-            *self.colorize_cluster_status(health["status"])
+        health["status"] = Color.colorize(
+            health.get("status"), getattr(Color, health.get("status").upper())
         )
 
         # Return a tuple of tuple. It will lead to a two-column table : "Attribute" and "Value"
-        return (("Attribute", "Value"), tuple(health.items()))
+        return (tuple(health.keys()), tuple(health.values()))
+```
 
-    def colorize_cluster_status(self, status):
-        return (getattr(Color, status.upper(), "END"), status, Color.END)
+Which will display :
+
+```
++----------------------------------+----------------+
+| Field                            | Value          |
++----------------------------------+----------------+
+| active_primary_shards            | 0              |
+| active_shards                    | 0              |
+| active_shards_percent_as_number  | 100.0          |
+| cluster_name                     | docker-cluster |
+| delayed_unassigned_shards        | 0              |
+| initializing_shards              | 0              |
+| number_of_data_nodes             | 1              |
+| number_of_in_flight_fetch        | 0              |
+| number_of_nodes                  | 1              |
+| number_of_pending_tasks          | 0              |
+| relocating_shards                | 0              |
+| status                           | green          |
+| task_max_waiting_in_queue_millis | 0              |
+| timed_out                        | False          |
+| unassigned_shards                | 0              |
++----------------------------------+----------------+
+```
+
+Instead of :
+
+```json
+{
+  "cluster_name" : "docker-cluster",
+  "status" : "green",
+  "timed_out" : false,
+  "number_of_nodes" : 1,
+  "number_of_data_nodes" : 1,
+  "active_primary_shards" : 0,
+  "active_shards" : 0,
+  "relocating_shards" : 0,
+  "initializing_shards" : 0,
+  "unassigned_shards" : 0,
+  "delayed_unassigned_shards" : 0,
+  "number_of_pending_tasks" : 0,
+  "number_of_in_flight_fetch" : 0,
+  "task_max_waiting_in_queue_millis" : 0,
+  "active_shards_percent_as_number" : 100.0
+}
 ```
