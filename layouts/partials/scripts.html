@@ -1,85 +1,86 @@
 <!-- highlight.js -->
 {{- if .Site.Params.highlightInClient -}}
-  <script src="{{ "lib/highlight/highlight.pack.js?v=20171001" | relURL }}"></script>
+<script src="{{ "lib/highlight/highlight.pack.js?v=20171001" | relURL }}"></script>
 {{- end -}}
 
 <!-- core -->
 {{- if .Site.Params.publicCDN.enable }}
-  {{ .Site.Params.publicCDN.jquery | safeHTML }}
-  {{ .Site.Params.publicCDN.slideout | safeHTML }}
-  {{ if .Site.Params.fancybox }}{{ .Site.Params.publicCDN.fancyboxJS | safeHTML }}{{ end }}
+{{ .Site.Params.publicCDN.jquery | safeHTML }}
+{{ if .Site.Params.publicCDN.slideout }}{{ .Site.Params.publicCDN.slideout | safeHTML }}{{ end }}
+{{ if .Site.Params.fancybox }}{{ .Site.Params.publicCDN.fancyboxJS | safeHTML }}{{ end }}
 {{- end -}}
 
 <!-- timeago.JS -->
 {{- if and (or .Params.enableOutdatedInfoWarning (and .Site.Params.outdatedInfoWarning.enable (ne .Params.enableOutdatedInfoWarning false))) (or .IsPage .IsHome) }}
-  {{- if .Site.Params.publicCDN.enable }}
-    {{ .Site.Params.publicCDN.timeagoJS | safeHTML }}
-    {{ .Site.Params.publicCDN.timeagoLocalesJS | safeHTML }}
-  {{- end }}
-  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
-    var languageCode = {{ .Site.LanguageCode }}.replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
-    timeago().render(document.querySelectorAll('.timeago'), languageCode);
-    timeago.cancel();  // stop update
-  </script>
+{{- if .Site.Params.publicCDN.enable }}
+{{ .Site.Params.publicCDN.timeagoJS | safeHTML }}
+{{ .Site.Params.publicCDN.timeagoLocalesJS | safeHTML }}
+{{- end }}
+<script>< !--NOTE: timeago.js uses the language code format like "zh_CN"(underscore and case sensitive)-- >
+    var languageCode = {{ .Site.LanguageCode }}.replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) { return $0.replace($1, $1.toUpperCase()); });
+  timeago().render(document.querySelectorAll('.timeago'), languageCode);
+  timeago.cancel();  // stop update
+</script>
 {{- end -}}
 
 <!-- flowchart -->
 {{- if and (or .Params.flowchartDiagrams.enable (and .Site.Params.flowchartDiagrams.enable (ne .Params.flowchartDiagrams.enable false))) (or .IsPage .IsHome) -}}
-  <script>
-    {{- if .Params.flowchartDiagrams.options -}}
-      window.flowchartDiagramsOptions = {{ .Params.flowchartDiagrams.options | safeJS }};
-    {{- else if .Site.Params.flowchartDiagrams.options -}}
-      window.flowchartDiagramsOptions = {{ .Site.Params.flowchartDiagrams.options | safeJS }};
-    {{- end -}}
-  </script>
-  {{- if .Site.Params.publicCDN.enable -}}
-    {{ .Site.Params.publicCDN.flowchartDiagramsJS | safeHTML }}
-  {{- end -}}
+<script>
+  { { - if .Params.flowchartDiagrams.options -} }
+  window.flowchartDiagramsOptions = {{ .Params.flowchartDiagrams.options | safeJS }};
+  { { - else if .Site.Params.flowchartDiagrams.options -} }
+  window.flowchartDiagramsOptions = {{ .Site.Params.flowchartDiagrams.options | safeJS }};
+  { { - end -} }
+</script>
+{{- if .Site.Params.publicCDN.enable -}}
+{{ .Site.Params.publicCDN.flowchartDiagramsJS | safeHTML }}
+{{- end -}}
 {{- end -}}
 
 <!-- js-sequence-diagrams -->
 {{- if and (or .Params.sequenceDiagrams.enable (and .Site.Params.sequenceDiagrams.enable (ne .Params.sequenceDiagrams.enable false))) (or .IsPage .IsHome) -}}
-  <script>
-    {{- if .Params.sequenceDiagrams.options -}}
-      window.sequenceDiagramsOptions = {{ .Params.sequenceDiagrams.options | safeJS }};
-    {{- else if .Site.Params.sequenceDiagrams.options -}}
-      window.sequenceDiagramsOptions = {{ .Site.Params.sequenceDiagrams.options | safeJS }};
-    {{- end -}}
-  </script>
-  {{- if .Site.Params.publicCDN.enable -}}
-    {{ .Site.Params.publicCDN.sequenceDiagramsJS | safeHTML }}
-    {{ .Site.Params.publicCDN.sequenceDiagramsCSS | safeHTML }}
-  {{- end -}}
+<script>
+  { { - if .Params.sequenceDiagrams.options -} }
+  window.sequenceDiagramsOptions = {{ .Params.sequenceDiagrams.options | safeJS }};
+  { { - else if .Site.Params.sequenceDiagrams.options -} }
+  window.sequenceDiagramsOptions = {{ .Site.Params.sequenceDiagrams.options | safeJS }};
+  { { - end -} }
+</script>
+{{- if .Site.Params.publicCDN.enable -}}
+{{ .Site.Params.publicCDN.sequenceDiagramsJS | safeHTML }}
+{{ .Site.Params.publicCDN.sequenceDiagramsCSS | safeHTML }}
+{{- end -}}
 {{- end }}
 <script type="text/javascript" src="{{ print "dist/" .Site.Data.even.assets.even.js | relURL }}"></script>
 
 {{- if and (or .Params.mathjax (and .Site.Params.mathjax (ne .Params.mathjax false))) (or .IsPage .IsHome) }}
-  <script type="text/javascript">
-    window.MathJax = {
-      {{ if or .Params.mathjaxEnableSingleDollar (and .Site.Params.mathjaxEnableSingleDollar (ne .Params.mathjaxEnableSingleDollar false)) -}}
-        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
-      {{ end -}}
-      {{ if or .Params.mathjaxEnableAutoNumber (and .Site.Params.mathjaxEnableAutoNumber (ne .Params.mathjaxEnableAutoNumber false)) -}}
-        TeX: {equationNumbers: {autoNumber: "AMS"}},
-      {{ end -}}
-      showProcessingMessages: false,
-      messageStyle: 'none'
+<script type="text/javascript">
+  window.MathJax = {
+      { { if or.Params.mathjaxEnableSingleDollar(and.Site.Params.mathjaxEnableSingleDollar(ne.Params.mathjaxEnableSingleDollar false)) -} }
+  tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+  { { end -} }
+  { { if or.Params.mathjaxEnableAutoNumber(and.Site.Params.mathjaxEnableAutoNumber(ne.Params.mathjaxEnableAutoNumber false)) -} }
+  TeX: { equationNumbers: { autoNumber: "AMS" } },
+  { { end -} }
+  showProcessingMessages: false,
+    messageStyle: 'none'
     };
-  </script>
-  {{ if .Site.Params.mathjaxUseLocalFiles -}}
-    <script type="text/javascript" async src="{{ "lib/mathjax/MathJax.js?config=TeX-MML-AM_CHTML" | relURL }}"></script>
-  {{- else -}}
-    <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
-  {{- end }}
+</script>
+{{ if .Site.Params.mathjaxUseLocalFiles -}}
+<script type="text/javascript" async src="{{ "lib/mathjax/MathJax.js?config=TeX-MML-AM_CHTML" | relURL }}"></script>
+{{- else -}}
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"
+  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+{{- end }}
 {{- end }}
 
 <!-- Analytics -->
 {{- if and (not .Site.IsServer) .Site.GoogleAnalytics -}}
-  {{ template "_internal/google_analytics_async.html" . }}
+{{ template "_internal/google_analytics_async.html" . }}
 {{- end -}}
 
 <!-- custom js -->
 {{ range .Site.Params.customJS -}}
-    {{ . | safeHTML }}
-  {{/* <script src="{{ "/js/" | relURL }}{{ . }}"></script> */}}
+{{ . | safeHTML }}
+{{/* <script src="{{ "/js/" | relURL }}{{ . }}"></script> */}}
 {{ end }}
