@@ -68,7 +68,8 @@
 
 <!-- Styles -->
 <link href="{{ print "dist/" .Site.Data.even.assets.even.css | relURL }}" rel="stylesheet">
-{{ if .Site.Params.publicCDN.enable -}}
+
+{{- if .Site.Params.publicCDN.enable -}}
 {{ if .Site.Params.fancybox }}{{ .Site.Params.publicCDN.fancyboxCSS | safeHTML }}{{ end }}
 {{- else -}}
 {{ if .Site.Params.fancybox }}
@@ -76,9 +77,10 @@
 {{- end -}}
 
 <!-- custom css -->
-{{ range .Site.Params.customCSS -}}
-<link rel="stylesheet" href="{{ "/css/" | relURL }}{{ . }}">
-{{ end }}
+{{- range .Site.Params.customCSS -}}
+{{ $style := resources.Get (printf "css/%s" . ) | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $style.Permalink | relURL }}" integrity="{{ $style.Data.Integrity }}">
+{{- end }}
 
 {{/* NOTE: These Hugo Internal Templates can be found starting at https://github.com/spf13/hugo/blob/master/tpl/tplimpl/template_embedded.go#L158 */}}
 {{- template "_internal/opengraph.html" . -}}
