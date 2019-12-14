@@ -4,6 +4,7 @@
 
 @font-face {
   font-family: 'iconfont';
+  font-display: swap;
 
   src: url('../fonts/iconfont/iconfont.eot');
   src: url('../fonts/iconfont/iconfont.eot#iefix') format('embedded-opentype'), // not '?#iefix', because webpack will add '?hash=[hash]'

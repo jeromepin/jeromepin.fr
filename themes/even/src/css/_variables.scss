@@ -80,6 +80,7 @@ $header-padding: 20px 20px !default;
 
 // Font family: Chancery
 @font-face {
+  font-display: swap;
   font-family: 'Chancery';
   src: url('../fonts/chancery/apple-chancery-webfont.eot');
   src: local('Apple Chancery'), url('../fonts/chancery/apple-chancery-webfont.eot?#iefix') format('embedded-opentype'),
