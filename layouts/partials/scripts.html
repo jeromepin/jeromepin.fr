@@ -1,3 +1,9 @@
+<!-- custom local js -->
+{{- range .Site.Params.customJS -}}
+{{ $script := resources.Get (printf "scripts/%s" . ) | minify | fingerprint }}
+<script src="{{ $script.Permalink | relURL }}" integrity="{{ $script.Data.Integrity }}"></script>
+{{- end }}
+
 <!-- highlight.js -->
 {{- if .Site.Params.highlightInClient -}}
 <script src="{{ "lib/highlight/highlight.pack.js?v=20171001" | relURL }}"></script>
@@ -60,9 +66,3 @@
 {{- if and (not .Site.IsServer) .Site.GoogleAnalytics -}}
 {{ template "_internal/google_analytics_async.html" . }}
 {{- end -}}
-
-<!-- custom local js -->
-{{- range .Site.Params.customJS -}}
-{{ $script := resources.Get (printf "scripts/%s" . ) | minify | fingerprint }}
-<script src="{{ $script.Permalink | relURL }}" integrity="{{ $script.Data.Integrity }}"></script>
-{{- end }}
