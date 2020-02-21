@@ -149,10 +149,16 @@ blockquote p {
 .post .post-content figure {
     margin-top: 3em;
     margin-bottom: 3em;
+    text-align: center;
 }
 
 .post .post-content figure figcaption {
     text-align: center;
+}
+
+.post .post-content p.has-jax > span.MathJax {
+    margin-left: 0.3em;
+    margin-right: 0.3em;
 }
 
 .social-links a {
