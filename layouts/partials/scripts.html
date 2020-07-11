@@ -1,3 +1,5 @@
+<script src="https://cdn.jsdelivr.net/gh/nextapps-de/flexsearch@0.6.22/dist/flexsearch.light.min.js"></script>
+
 <!-- custom local js -->
 {{- range .Site.Params.customJS -}}
 {{ $script := resources.Get (printf "scripts/%s" . ) | minify | fingerprint }}

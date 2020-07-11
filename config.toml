@@ -34,7 +34,7 @@ pygmentsCodefencesGuessSyntax = true
   mathjaxEnableAutoNumber = false
   mathjaxUseLocalFiles = false
   customCSS = ['override.css']
-  customJS = ['cash.js', 'mermaid.js']
+  customJS = ['cash.js', 'mermaid.js', 'search.js']
 
   [params.publicCDN]
     enable = false
