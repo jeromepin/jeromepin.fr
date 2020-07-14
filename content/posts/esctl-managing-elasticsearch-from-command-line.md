@@ -2,6 +2,7 @@
 title: "Esctl: managing elasticsearch from the command line."
 date: 2019-09-22T22:08:00+01:00
 draft: false
+lang: en
 ---
 
 During my month of unemployment, I spent time thinking on how I had tackled technical problems in my last year-and-half of work. The best part of my day-to-day mission was to ensure our Elasticsearch clusters were healthy, secured and efficient. To that end, I was using a combination of tools:

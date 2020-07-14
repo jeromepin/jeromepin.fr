@@ -1,9 +1,11 @@
-<div class="logo-wrapper">
-  <a href="{{ "/" | relLangURL }}" class="logo">
-    {{- if .Site.Params.logoTitle -}}
+<div>
+  <div class="logo-wrapper">
+    <a href="{{ "/" | relLangURL }}" class="logo">
+      {{- if .Site.Params.logoTitle -}}
       {{ .Site.Params.logoTitle }}
-    {{- else -}}
+      {{- else -}}
       {{ .Site.Title }}
-    {{- end -}}
-  </a>
+      {{- end -}}
+    </a>
+  </div>
 </div>

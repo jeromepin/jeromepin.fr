@@ -19,7 +19,8 @@
             {{- end }}
             {{ if and .Site.Params.busuanzi.enable .Site.Params.busuanzi.pagePV -}}
             {{ $valueSpan := printf `<span id="busuanzi_value_page_pv"><img src="%s" alt="spinner.svg"/></span>` ("img/spinner.svg" | relURL) -}}
-            <span id="busuanzi_container_page_pv" class="more-meta"> {{ printf (T "pagePV") $valueSpan | safeHTML }} </span>
+            <span id="busuanzi_container_page_pv" class="more-meta"> {{ printf (T "pagePV") $valueSpan | safeHTML }}
+            </span>
             {{- end }}
         </div>
     </header>
@@ -60,11 +61,13 @@
             </a>
             {{- end }}
             {{ with .PrevInSection -}}
+            {{- if ne .Params.hide true }}
             <a class="next" href="{{ .URL }}">
                 <span class="next-text nav-default">{{ .Title }}</span>
                 <span class="next-text nav-mobile">{{ T "nextPost" }}</span>
                 <i class="iconfont icon-right"></i>
             </a>
+            {{- end }}
             {{- end }}
         </nav>
     </footer>

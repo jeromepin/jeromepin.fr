@@ -1,0 +1,11 @@
+[
+{{- range $index, $page := .Site.RegularPages -}}
+{{- if (and (ne $page.Params.hide true) (ne $page.Params.draft true)) -}}
+{{- if gt $index 0 -}} , {{- end -}}
+{{- $entry := dict "uri" $page.RelPermalink "title" $page.Title -}}
+{{- $entry = merge $entry (dict "content" ($page.Plain | plainify | htmlUnescape)) -}}
+{{- $entry = merge $entry (dict "lang" ($page.Params.lang | default "fr")) -}}
+{{- $entry | jsonify -}}
+{{- end -}}
+{{- end -}}
+]

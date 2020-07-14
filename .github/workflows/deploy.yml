@@ -1,7 +1,6 @@
 name: Push to GitHub Pages on push to master
 
-on:
-  push
+on: push
 
 jobs:
   build:
@@ -14,7 +13,7 @@ jobs:
       - name: Deploy the site
         uses: benmatselby/hugo-deploy-gh-pages@v1.4.0
         env:
-          # HUGO_VERSION: 0.58
+          HUGO_VERSION: 0.58.3
           TARGET_REPO: jeromepin/jeromepin.github.io
           TOKEN: ${{ secrets.DEPLOY_PAGE }}
           CNAME: jeromepin.fr
