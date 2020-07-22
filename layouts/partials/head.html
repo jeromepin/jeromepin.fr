@@ -75,8 +75,8 @@
 
 <!-- custom css -->
 {{- range .Site.Params.customCSS -}}
-{{ $style := resources.Get (printf "css/%s" . ) | minify | fingerprint }}
-<link rel="stylesheet" href="{{ $style.Permalink | relURL }}" integrity="{{ $style.Data.Integrity }}"/>
+{{ $style := resources.Get (printf "css/%s" . ) | resources.ToCSS | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $style.Permalink | relURL }}" integrity="{{ $style.Data.Integrity }}" />
 {{- end }}
 
 {{/* NOTE: These Hugo Internal Templates can be found starting at https://github.com/spf13/hugo/blob/master/tpl/tplimpl/template_embedded.go#L158 */}}

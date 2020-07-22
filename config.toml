@@ -41,7 +41,7 @@ pygmentsCodefencesGuessSyntax = true
   mathjaxEnableSingleDollar = false
   mathjaxEnableAutoNumber = false
   mathjaxUseLocalFiles = false
-  customCSS = ['override.css']
+  customCSS = ['override.scss']
   customJS = ['cash.js', 'mermaid.js', 'lunr.stemmer.support.js', 'lunr.fr.js', 'search.js']
 
   [params.publicCDN]
