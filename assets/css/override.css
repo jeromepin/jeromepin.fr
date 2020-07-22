@@ -104,6 +104,36 @@ blockquote p {
     transform: none;
 }
 
+.post .post-toc {
+    position: inherit;
+    width: auto;
+    margin-left: 0;
+}
+
+.post .post-toc .post-toc-title {
+    margin: 0 10px;
+    /* font-size: $post-toc-title-size; */
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.post .post-toc .post-toc-content > nav ul li {
+    font-size: 14px;
+    line-height: 24px;
+    padding-left: 0px;
+    list-style-type: circle;
+}
+
+.post .post-toc .post-toc-content > nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.post .post-toc .post-toc-content ul ul {
+    /* padding-left: 0px; */
+    display: none;
+}
+
+
 .post .post-header {
     margin-bottom: 40px;
     text-align: center;
