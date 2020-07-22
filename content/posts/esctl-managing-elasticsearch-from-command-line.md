@@ -1,5 +1,5 @@
 ---
-title: "Esctl: managing elasticsearch from the command line."
+title: "Esctl: managing elasticsearch from the command line"
 date: 2019-09-22T22:08:00+01:00
 draft: false
 lang: en
