@@ -273,6 +273,8 @@ blockquote {
 		}
 	}
 }
+
+
 .social-links {
 	a {
 		color: #cccccc;
@@ -281,6 +283,21 @@ blockquote {
 		}
 	}
 }
+
+.report-error {
+	text-align: center;
+
+	p {
+		font-size: 12px;
+		color: #cccccc;
+		margin-bottom: 0;
+
+		a {
+			color: $link;
+		}
+	}
+}
+
 .copyright {
 	font-size: 12px;
 	span {
