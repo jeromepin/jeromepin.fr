@@ -13,13 +13,8 @@ pygmentsCodefences = true
 pygmentsUseClasses = false
 pygmentsCodefencesGuessSyntax = true
 
-[outputFormats]
-  [outputFormats.SearchIndex]
-    baseName = "search"
-    mediaType = "application/json"
-
 [outputs]
-  home = ["HTML", "RSS", "SearchIndex"]
+  home = ["HTML", "RSS"]
 
 [author]
   name = "Jérôme Pin"
@@ -42,7 +37,7 @@ pygmentsCodefencesGuessSyntax = true
   mathjaxEnableAutoNumber = false
   mathjaxUseLocalFiles = false
   customCSS = ['override.scss']
-  customJS = ['cash.js', 'mermaid.js', 'lunr.stemmer.support.js', 'lunr.fr.js', 'search.js']
+  customJS = ['cash.js', 'mermaid.js']
 
   [params.publicCDN]
     enable = false
