@@ -30,7 +30,7 @@ Le plus surprenant c'est que l'augmentation de la cardinalité des labels augmen
 
 Que va-t'il se passer si l'on décide d'ajouter un label `customer` qui a pour valeur un UUID ? D'après [Wikipédia](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_(random)), un UUID dans sa version 4 a 122 bits générés aléatoirement à 0 ou 1, soit $2^{122}$ possiblités !
 
-{{< figure src="https://media.giphy.com/media/O3GqAYR9jFxLi/source.gif" title="Boooooom" >}}
+{{figure(src="https://media.giphy.com/media/O3GqAYR9jFxLi/source.gif" title="Boooooom")}}
 
  
 Il semble évident que demander une granularité aussi fine à un tel système est impossible. Les timeseries sont conçues pour traiter et afficher des données en temps réel. Malheureusement, le temps réel est quelque chose de très coûteux, il faut donc faire quelques compromis. Limiter la précision (et donc la cardinalité) est un bon moyen d'équilibrer le cout. Il faudrait alors se tourner vers un second système dédié à de la précision, tel que l'analyse de logs, pour compléter les mesures.

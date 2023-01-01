@@ -24,14 +24,14 @@ Here are some commands I used to run on a regular basis (examples come from [Ela
 
 #### List indices
 
-```bash
+```bash,linenos
 $ curl -X GET "localhost:9200/_cat/indices"
 yellow open foo VrIiXmIRRA6BNP5JWaXKqA 1 1 0 0 283b 283b
 ```
 
 #### Change the number of replicas of a given index
 
-```bash
+```bash,linenos
 $ curl -X PUT "localhost:9200/twitter/_settings?pretty" -H 'Content-Type: application/json' -d'
 {
     "index" : {
@@ -43,7 +43,7 @@ $ curl -X PUT "localhost:9200/twitter/_settings?pretty" -H 'Content-Type: applic
 
 #### Reset a index's refresh interval to its default value
 
-```bash
+```bash,linenos
 $ curl -X PUT "localhost:9200/twitter/_settings?pretty" -H 'Content-Type: application/json' -d'
 {
     "index" : {
@@ -55,7 +55,7 @@ $ curl -X PUT "localhost:9200/twitter/_settings?pretty" -H 'Content-Type: applic
 
 #### Pretty-print cluster stats
 
-```bash
+```bash,linenos
 $ curl -X GET "localhost:9200/_cluster/stats"
 {
     "_nodes": {
@@ -101,7 +101,7 @@ $ curl -X GET "localhost:9200/_cluster/stats"
 
 #### Reroute shard 0 of index 'test' from node1 to node2
 
-```bash
+```bash,linenos
 $ curl -X POST "localhost:9200/_cluster/reroute?pretty" -H 'Content-Type: application/json' -d'
 {
     "commands" : [
@@ -118,7 +118,7 @@ $ curl -X POST "localhost:9200/_cluster/reroute?pretty" -H 'Content-Type: applic
 
 #### Change cluster's transient setting 'indices.recovery.max_bytes_per_sec' to 20mb
 
-```bash
+```bash,linenos
 $ curl -X PUT "localhost:9200/_cluster/settings?flat_settings=true&pretty" -H 'Content-Type: application/json' -d'
 {
     "transient" : {
@@ -154,11 +154,11 @@ I needed a tool which could abstract all those long curl commands and could be f
 
 I ended up writing [esctl](https://github.com/jeromepin/esctl). It checks all my requirements and it's very easy to add new features by inheriting a class based on the output type.
 
-{{< figure src="/images/esctl-CLI-design-tree.svg" title="Esctl subcommands taxonomy" alt="Esctl subcommands taxonomy" >}}
+{{figure(src="/images/esctl-CLI-design-tree.svg" title="Esctl subcommands taxonomy" alt="Esctl subcommands taxonomy")}}
 
 It relies on a config file (inspired by `kubectl`) to declare settings (global and cluster-wide), clusters, users and contexts (an association of a user and a cluster) :
 
-```yaml
+```yaml,linenos
 settings:
   no_check_certificate: true
   max_retries: 0
@@ -234,7 +234,7 @@ It allows to dramatically shorten previously shown commands :
 
 #### List indices
 
-```bash
+```bash,linenos
 $ esctl index list
 +-------+--------+--------+------------------------+---------+---------+------------+--------------+------------+--------------------+
 | Index | Health | Status | UUID                   | Primary | Replica | Docs Count | Docs Deleted | Store Size | Primary Store Size |
@@ -247,7 +247,7 @@ $ esctl index list
 
 _Not implemented yet. Would look like :_
 
-```bash
+```bash,linenos
 $ esctl index settings set number_of_replicas 2 --index=twitter
 ```
 
@@ -255,13 +255,13 @@ $ esctl index settings set number_of_replicas 2 --index=twitter
 
 _Not implemented yet. Would look like :_
 
-```bash
+```bash,linenos
 $ esctl index settings reset refresh_interval --index=twitter
 ```
 
 #### Pretty-print cluster stats
 
-```bash
+```bash,linenos
 $ esctl cluster stats
 +------------------------------------------------+------------------------------+
 | Attribute                                      |                        Value |
@@ -304,7 +304,7 @@ _Not implemented yet_
 
 _Not implemented yet. Would look like :_
 
-```bash
+```bash,linenos
 $ esctl cluster settings set --transient indices.recovery.max_bytes_per_sec 20mb
 ```
 
@@ -319,7 +319,7 @@ I created 3 output class based on Cliff's ones:
 
 To add a new subcommand, I only need to choose the output class (and inherit my class from it) and write the `take_action` method:
 
-```python
+```python,linenos
 def take_action(self, parsed_args):
     """Generate or retrieve data to be displayed.
 
@@ -335,7 +335,7 @@ def take_action(self, parsed_args):
 
 Here is, as a sample, the class associated to the `esctl cluster health` command:
 
-```python
+```python,linenos
 class ClusterHealth(EsctlShowOne):
     """Retrieve the cluster health."""
 
@@ -378,7 +378,7 @@ Which will display :
 
 Instead of :
 
-```json
+```json,linenos
 {
   "cluster_name" : "docker-cluster",
   "status" : "green",

@@ -13,7 +13,7 @@ Fonction qui calcule, à partir d'une donnée, une empreinte (un _hash_) servant
 
 Un changement, même mineur, dans la donnée initiale est censé assurer une empreinte différente. Dans la cas contraire, il s'agit d'une collision : des données différentes créent une même empreinte.
 
-``` bash
+``` bash,linenos
 $ echo "fonction" | md5sum
 3427b8d6a435abf3673490bfa2762ef4
 

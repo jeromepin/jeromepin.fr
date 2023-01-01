@@ -17,7 +17,7 @@ La méthode _PUT_ apparait ne pas être la solution idéale pour effectuer une m
 
 Certaines API proposent d'exposer directement chaque champ de la ressource et d'utiliser _PUT_ pour faire la mise à jour :
 
-```http
+```json,linenos
 PUT /users/jeromepin/age
 
 24
@@ -29,7 +29,7 @@ C'est une solution simple mais qui rajoute beaucoup de complexité dans l'API. E
 
 _PATCH_ permet donc de modifier **partiellement** une ressource donnée. Ainsi beaucoup d'APIs ont ajouté le support de ce verbe au travers d'appels tels que :
 
-```http
+```json,linenos
 PATCH /users/jeromepin
 
 age=25
@@ -37,7 +37,7 @@ age=25
 
 ou encore :
 
-```http
+```json,linenos
 PATCH /users/jeromepin
 
 { "age" : "25" }
@@ -58,7 +58,7 @@ Il est clairement indiqué que _PATCH_, contrairement à _PUT_ qui envoi la nouv
 
 Une requête _PATCH_ ressemble à ça :
 
-```http
+```json,linenos
 PATCH /users/jeromepin HTTP/1.1
 Host: www.example.com
 Content-Type: application/example
@@ -68,7 +68,7 @@ Content-Type: application/example
 
 `[description of changes]` est appelé "_patch document_" (ou plus simplement "_patch_"). Le format de ce patch n'est pas défini dans cette RFC est peut-être de n'importe quel type comme par exemple la sortie de la commande `diff` :
 
-```http
+```json,linenos
 PATCH /users/jeromepin HTTP/1.1
 Host: www.example.com
 Content-Type: application/diff
@@ -97,7 +97,7 @@ Heureusement, pour la manipulation de documents JSON (issus par exemple de base 
 Un _"JSON Pointer"_ défini une syntaxe sous forme de chaine de caractères pour identifier une valeur spécifique au sein d'un objet JSON : `/users/0/email`.
 Un _"JSON Patch"_ défini la structure d'un document JSON permettant d'exprimer une série de modifications à appliquer à un document JSON :
 
-```json
+```json,linenos
 [
      { "op": "test", "path": "/a/b/c", "value": "foo" },
      { "op": "remove", "path": "/a/b/c" },
@@ -110,7 +110,7 @@ Un _"JSON Patch"_ défini la structure d'un document JSON permettant d'exprimer 
 
 Avec ces deux nouvelles RFC, il est possible d'effectuer une requête _PATCH_ pour enfin modifier un document JSON :
 
-```http
+```json,linenos
 PATCH /users/jeromepin HTTP/1.1
 Host: www.example.com
 Content-Type: application/json-patch+json
@@ -126,7 +126,7 @@ Dans le cas où le serveur manipule du XML, une [RFC](http://tools.ietf.org/html
 
 Cet usage de _PATCH_ reste très peu connu. Il est censé être le standard à utiliser pour des mises à jour partielles, mais il est facile de s'aperçevoir qu'un tel fonctionnement complexifie la gestion du serveur et la façon dont nous avons l'habitude d'utiliser les verbes plus traditionnels (_GET_, _POST_, _PUT_). La RFC étant très souple, il est tout à fait possible d'utiliser son propre format de patch, ainsi pour incrémenter l'age, il est possible de faire quelque chose comme :
 
-```http
+```json,linenos
 PATCH /users/jeromepin HTTP/1.1
 Host: www.example.com
 Content-Type: application/custom-format+json

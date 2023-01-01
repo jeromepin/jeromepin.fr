@@ -2,3 +2,5 @@ public/
 resources/_gen/
 __pycache__/
 **/.DS_Store
+scenes/media/
+media

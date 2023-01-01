@@ -9,19 +9,19 @@ draft: false
 
 La configuration d'un service doit être optionnelle et tous ses paramètres doivent avoir une valeur par défaut :
 
-```javascript
+```javascript,linenos
 const ELASTICSEARCH_HOST = process.env.ELASTICSEARCH_HOST || 'localhost';
 ```
 
 Ou encore :
 
-```bash
+```bash,linenos
 ELASTICSEARCH_HOST=${$ELASTICSEARCH_HOST:-localhost} 
 ```
 
 Chaque élément de configuration doit être modifiable par une variable d'environnement correctement nommée. L'intérêt est de permettre de changer le comportement de l'application au _runtime_ plutôt qu'au _buildtime_. De plus, l'usage d'orchestrateurs de conteneurs comme _Docker Swarm_ ou _Kubernetes_ rendent plus pratique le passage de variables d'environnement que de fichiers de configuration.
 
-```yaml
+```yaml,linenos
 apiVersion: v1
 kind: Pod
 metadata:
@@ -41,7 +41,7 @@ spec:
 
 Une application doit être en mesure de réagir aux [signaux](http://man7.org/linux/man-pages/man7/signal.7.html) envoyés par l'OS et en tirer parti. Par exemple, [Prometheus](https://prometheus.io) recharge sa configuration à la réception d'un SIGHUP :
 
-```bash
+```bash,linenos
 $ kill -HUP 1234
 INFO[1234] Loading configuration file prometheus.yml source=main.go:201
 INFO[1234] Stopping target manager... source=targetmanager.go:281
@@ -103,7 +103,7 @@ C'est avec toutes ces contraintes que des langages comme [Go](https://golang.org
 
 Pour un même programme C++ :
 
-```cpp
+```cpp,linenos
 #include <iostream>
 
 int main() {
@@ -116,7 +116,7 @@ Le binaire compilé dynamiquement pèse 7.8Ko contre 1.6Mo statiquement. La diff
 
 La commande `ldd` permet de connaître les librairies liées au binaire :
 
-```bash
+```bash,linenos
 $ g++ -o foo foo.cpp
 $ ldd foo
 	linux-vdso.so.1 (0x00007fffc9ff8000)
@@ -129,7 +129,7 @@ $ ldd foo
 
 Mon binaire `foo` requiert notamment `libstdc++.so.6 ` (`/usr/lib/x86_64-linux-gnu/libstdc++.so.6`) et `libc.so.6` (`/lib/x86_64-linux-gnu/libc.so.6`). Si je distribue ce binaire sur une autre machine, il faudra non seulement qu'elle tourne sur le même OS, mais aussi que les librairies soient les mêmes (chemin et version) :
 
-```bash
+```bash,linenos
 $ mv /lib/x86_64-linux-gnu/libc.so.6 /lib/x86_64-linux-gnu/libc.so.6.old
 $ ./foo
 ./foo: error while loading shared libraries: libc.so.6: cannot open shared object file: No such file or directory

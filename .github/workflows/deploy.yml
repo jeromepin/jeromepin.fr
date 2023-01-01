@@ -8,13 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout master
-        uses: actions/checkout@v2.0.0
+        uses: actions/checkout@v3.0.0
 
       - name: Deploy the site
-        uses: benmatselby/hugo-deploy-gh-pages@v1.5.0
+        uses: shalzz/zola-deploy-action@v0.16.1
         env:
-          HUGO_VERSION: 0.74.1
-          HUGO_EXTENDED: true
-          TARGET_REPO: jeromepin/jeromepin.github.io
-          TOKEN: ${{ secrets.DEPLOY_PAGE }}
-          CNAME: jeromepin.fr
+          GITHUB_TOKEN: ${{ secrets.DEPLOY_PAGE }}
+          PAGES_BRANCH: master
+          REPOSITORY: jeromepin/jeromepin.github.io

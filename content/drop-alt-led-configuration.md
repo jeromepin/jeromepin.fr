@@ -12,7 +12,7 @@ I ended up [reading code](https://github.com/qmk/qmk_firmware/blob/master/keyboa
 
 A particular example caught my attention : 
 
-```c
+```c,linenos
 //Specific LEDs use specified RGB values while all others are off
 { .flags = LED_FLAG_MATCH_ID | LED_FLAG_USE_RGB, \
     .id0 = 0xFF, \
@@ -52,12 +52,12 @@ Each LED is assigned a number from `0` to `31` based on its position in the grou
 
 Let say we want to display a green color on the first four letters of every row (`Q(16)`, `W(17)`, `E(18)`, `R(19)`, `A(31)`, `S(0)`, `D(1)`, `F(2)`, `Z(13)`, `X(14)`, `C(15)`, `V(16)`). We just need to add every value as a power of two : 
 
-* $$ .id0 = 2^{16} + 2^{17} + 2^{18} + 2^{19} + 2^{31} = 2 148 466 688 $$
-* $$ .id1 = 2^0 + 2^1 + 2^2 + 2^{13} + 2^{14} + 2^{15} + 2^{16} = 122 887 $$
+$$ .id0 = 2^{16} + 2^{17} + 2^{18} + 2^{19} + 2^{31} = 2 148 466 688 $$
+$$ .id1 = 2^0 + 2^1 + 2^2 + 2^{13} + 2^{14} + 2^{15} + 2^{16} = 122 887 $$
 
 And we get :
 
-```c
+```c,linenos
 { .flags = LED_FLAG_MATCH_ID | LED_FLAG_USE_RGB, \
     .id0 = 2148466688, \
     .id1 = 122887, \
