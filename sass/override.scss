@@ -118,10 +118,20 @@ a {
 		}
 	}
 
-	.site-navbar {
-		.menu {
-			.menu-item-link {
-				font-size: 22px;
+	.menu {
+		ul {
+			padding: 0;
+
+			li {
+				font-family: $font-family;
+
+				&:before {
+					content: none;
+				}
+
+				a:hover {
+					color: $primary;
+				}
 			}
 		}
 	}

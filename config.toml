@@ -13,8 +13,8 @@ theme = "even"
 
 taxonomies = [
     # You can enable/disable RSS
-    {name = "categories", feed = true},
-    {name = "tags", feed = true},
+    # {name = "categories", feed = true},
+    # {name = "tags", feed = true},
 ]
 
 [markdown]
@@ -22,6 +22,8 @@ highlight_code = true
 highlight_theme = "ayu-light"
 
 [extra]
-even_menu = []
+even_menu = [
+    {url = "https://notes.jeromepin.fr", name = "Notes"},
+]
 katex_enable = true
 katex_auto_render = true
