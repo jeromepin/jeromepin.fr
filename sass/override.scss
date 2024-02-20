@@ -149,8 +149,20 @@ a {
 		transform: none;
 
 		.archive-post-time {
+			font-family: monospace;
 			color: #8a8a8a;
 			margin-right: 15px;
+		}
+
+		.archive-post-title {
+			.archive-post-link {
+				span.external-link-symbol {
+					color: #8a8a8a;
+					font-family: monospace;
+					font-size: 18px;
+					vertical-align: top;
+				}
+			}
 		}
 
 		&:hover {

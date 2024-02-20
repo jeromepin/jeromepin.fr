@@ -85,15 +85,17 @@
             <main id="main" class="main">
                 <div class="content" id="mobile-panel content">
                     {% block content %}
-                        <section class="archive" id="archive">
-                            {% for page in paginator.pages %}
+                    <section class="archive" id="archive">
+                        {% set pages = paginator.pages | concat(with=config.extra.entries) | sort(attribute="date") | reverse %}
+
+                        {% for page in pages %}
                             {% set currentPageYear = page.date | date(format="%Y") %}
                             {% if loop.first %}
                                 <div class="collection-title">
                                     <h2 class="archive-year">{{ page.date | date(format="%Y") }}</h2>
                                 </div>
                             {% else %}
-                                {% set previousPage = paginator.pages | nth(n=loop.index0 - 1) %}
+                                {% set previousPage = pages | nth(n=loop.index0 - 1) %}
                                 {% set previousPageYear = previousPage.date | date(format="%Y") %}
                                 {% if previousPageYear != currentPageYear %}
                                 <div class="collection-title">
@@ -101,11 +103,16 @@
                                 </div>
                                 {% endif %}
                             {% endif %}
-                                <div class="archive-post">
-                                    <span class="archive-post-time">{{ page.date | date(format="%d %b") }}</span>
-                                    <span class="archive-post-title"><a class="archive-post-link" href="{{ page.permalink }}">{{ page.title }}</a></span>
-                                </div>
-                            {% endfor %}
+                            <div class="archive-post">
+                                <span class="archive-post-time">{{ page.date | date(format="%d %b") }}</span>
+                                <span class="archive-post-title">
+                                    <a class="archive-post-link" href="{{ page.permalink }}">
+                                        {{ page.title }}
+                                        {% if page.external %}<span class="external-link-symbol">↪</span>{% endif %}
+                                    </a>
+                                </span>
+                            </div>
+                        {% endfor %}
                         </section>
                     {% endblock content %}
                 </div>

@@ -24,8 +24,10 @@ highlight_code = true
 highlight_theme = "ayu-light"
 
 [extra]
-even_menu = [
-    {url = "https://notes.jeromepin.fr", name = "Notes"},
-]
+even_menu = []
 katex_enable = true
 katex_auto_render = true
+entries = [
+    {date = "2022-05-23T00:00:00+01:00", permalink = "https://medium.com/lumapps-engineering/terraform-at-lumapps-part-1-f37660b4ed95", title = "Terraform at LumApps: Part 1 - A huge Terraform monorepo", external = true},
+    {date = "2023-12-18T00:00:00+01:00", permalink = "https://medium.com/lumapps-engineering/terraform-at-lumapps-part-2-27494897def4", title = "Terraform at LumApps: Part 2 - Managing terragrunt.hcl files at scale", external = true},
+]
