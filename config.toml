@@ -10,6 +10,7 @@ compile_sass = true
 build_search_index = true
 
 generate_feed = true
+author = "Jérôme Pin"
 
 theme = "even"
 
