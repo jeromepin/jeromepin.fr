@@ -40,7 +40,7 @@
     {% endif %}
 
     <div class="post-content">
-      {{ page.content | safe }}
+        {{ page.content | safe }}
     </div>
 
     {% block page_before_footer %}
@@ -48,23 +48,54 @@
 
     <div class="post-footer">
         {% block page_footer %}
-            {% if page.taxonomies.tags %}
-                <div class="post-tags">
-                    {% for tag in page.taxonomies.tags %}
-                        <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}">#{{ tag }}</a>
-                    {% endfor %}
-                </div>
+        {% if page.taxonomies.tags %}
+        <div class="post-tags">
+            {% for tag in page.taxonomies.tags %}
+            <a href="{{ get_taxonomy_url(kind='tags', name=tag) }}">#{{ tag }}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% if page.extra.sources | length > 0 or page.extra.footnotes | length > 0 %}
+        <details class="sources" open>
+            <summary class="sources-title">Footnotes & sources</summary>
+            <ol class="footnotes-list">
+                {%- for footnote in page.extra.footnotes -%}
+                <li id="{{loop.index}}">{{ footnote[0]|safe }} <a class="footnote-backlink"
+                        href="#ref:{{loop.index}}">↩</a> <a class="footnote-source-link"
+                        href="{{ footnote[1] }}">Source</a></li>
+                {%- endfor -%}
+            </ol>
+            <ul>
+                {% for source in page.extra.sources %}
+                {% if source is string %}
+                <li><a href="{{ source }}">{{ source }}</a></li>
+                {% else %}
+                <li id="source-{{ source[0] | urlencode_strict }}"><a href="{{ source[0] }}">{{ source[1] }}</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </details>
+        {% endif %}
+
+        {% if "backlinks" in page and page.backlinks | length > 0 %}
+        <h4>Backlinks</h4>
+        {% for page in page.backlinks %}
+        <a href="{{ page.permalink }}" title="{{ page.title }}">{{ page.title }}</a>
+        {% endfor %}
+        {% endif %}
+
+        {#
+        {% if page.lower or page.higher %}
+        <div class="post-nav">
+            {% if page.lower %}
+            <a class="previous" href="{{ page.lower.permalink }}">‹ {{ page.lower.title }}</a>
             {% endif %}
-            {% if page.lower or page.higher %}
-                <div class="post-nav">
-                    {% if page.lower %}
-                        <a class="previous" href="{{ page.lower.permalink }}">‹ {{ page.lower.title }}</a>
-                    {% endif %}
-                    {% if page.higher %}
-                        <a class="next" href="{{ page.higher.permalink }}">{{ page.higher.title }} ›</a>
-                    {% endif %}
-                </div>
+            {% if page.higher %}
+            <a class="next" href="{{ page.higher.permalink }}">{{ page.higher.title }} ›</a>
             {% endif %}
+        </div>
+        {% endif %}
+        #}
 
         {% endblock page_footer %}
 
@@ -75,4 +106,3 @@
 </article>
 
 {% endblock content %}
-

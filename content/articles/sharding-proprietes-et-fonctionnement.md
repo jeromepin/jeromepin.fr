@@ -1,7 +1,12 @@
 ---
 title: "Sharding : Propriétés et fonctionnement"
 date: 2018-07-12T08:54:00+01:00
-draft: false
+lang: fr
+taxonomies:
+  tags: []
+extra:
+  sources: []
+  footnotes: []
 ---
 
 Le sharding (aussi souvent nommé _horizontal partitioning_) est une méthode de séparation des données d'une base de données en plusieurs groupes logiques, généralement répartis sur plusieurs nœuds d'un cluster.

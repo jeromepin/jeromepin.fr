@@ -1,6 +1,12 @@
 ---
 title: "Timeseries : Cardinalité et explosion"
 date: 2020-01-04T21:12:00+01:00
+lang: fr
+taxonomies:
+  tags: []
+extra:
+  sources: []
+  footnotes: []
 ---
 
 

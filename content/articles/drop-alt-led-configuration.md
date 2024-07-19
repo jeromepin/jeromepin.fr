@@ -2,6 +2,11 @@
 title: "Drop ALT led configuration using bitmask"
 date: 2020-08-23T12:23:13+02:00
 lang: en
+taxonomies:
+  tags: []
+extra:
+  sources: []
+  footnotes: []
 ---
 
 I recently purchased an [ALT mechanical keyboard](https://drop.com/buy/drop-alt-high-profile-mechanical-keyboard) from Drop (formerly Massdrop).

@@ -1,0 +1,19 @@
+{% macro render_pages_tree(section, level) %}
+<li class="nav-tree-indent-{{level}}">{{ section.components | last | trim | title }}</li>
+
+{% for post in section.pages %}
+<li class="nav-tree-indent-{{level+1}}">&middot;<a href="{{ post.permalink }}">{{
+        post.title }}</a></li>
+{% endfor %}
+
+{% if section.subsections | length > 0 %}
+<li>
+    <ul>
+        {% for subsection_path in section.subsections | sort %}
+        {{ macros::render_pages_tree(section=get_section(path=subsection_path), level=level+1) }}
+        {% endfor %}
+    </ul>
+</li>
+
+{% endif %}
+{% endmacro render_pages_tree %}

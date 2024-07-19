@@ -1,7 +1,12 @@
 ---
 title: "Construire de bons microservices"
 date: 2018-09-02T14:51:00+01:00
-draft: false
+lang: fr
+taxonomies:
+  tags: []
+extra:
+  sources: []
+  footnotes: []
 ---
 
 

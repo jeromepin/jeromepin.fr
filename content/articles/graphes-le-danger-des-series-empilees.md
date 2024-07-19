@@ -1,6 +1,12 @@
 ---
 title: "Graphes : Le danger des séries empilées"
 date: 2020-05-03T11:33:00+01:00
+lang: fr
+taxonomies:
+  tags: []
+extra:
+  sources: []
+  footnotes: []
 ---
 
 
